@@ -1,0 +1,29 @@
+<div class="container mt-3">
+  <h1 class="text-center">Reactive forms</h1>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <form [formGroup]="form2">
+        <div formGroupName="heroInfo">
+          <div class="form-group">
+            <label for="nome">Nome</label>
+            <input type="text" class="form-control" id="nome" formControlName="nome">
+          </div>
+          <div class="form-group">
+            <label for="alterEgo">Alter Ego</label>
+            <input type="text" class="form-control" id="alterEgo" formControlName="alterEgo">
+          </div>
+        </div>
+        <div formArrayName="poteri" class="mb-3">
+          <h3>Poteri</h3>
+          <button type="button" class="btn btn-success" (click)="addPowers()">Aggiungi poteri</button>
+          <div class="form-group mb-2" *ngFor="let power of getPowersF(); let i = index">
+            <input type="text" class="form-control mt-2" [formControlName]="i">
+          </div>
+        </div>
+        <button type="button" (click)="submit()" class="btn btn-primary" [disabled]="form2.invalid">Invia</button>
+      </form>
+    </div>
+  </div>
+</div>
